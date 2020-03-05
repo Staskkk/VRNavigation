@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Threading;
 #if UNITY_2018_3_OR_NEWER
 using UnityEngine.Experimental.Rendering;
+using UnityEngine.Rendering;
 #endif
 
 /// \ingroup Vis
@@ -363,12 +364,12 @@ public class SECTR_CullingCamera : MonoBehaviour
     void OnEnable()
     {
 
-#if UNITY_2018_3_OR_NEWER
-        if (LWRP_Fix)
-        {
-            RenderPipeline.beginFrameRendering += RenderPipeline_beginFrameRendering;
-        }
-#endif
+//#if UNITY_2018_3_OR_NEWER
+//        if (LWRP_Fix)
+//        {
+//            RenderPipeline.beginFrameRendering += RenderPipeline_beginFrameRendering;
+//        }
+//#endif
 
         myCamera = GetComponent<Camera>();
         cullingMember = GetComponent<SECTR_Member>();
@@ -402,12 +403,12 @@ public class SECTR_CullingCamera : MonoBehaviour
 
     void OnDisable()
     {
-#if UNITY_2018_3_OR_NEWER
-        if (LWRP_Fix)
-        {
-            RenderPipeline.beginFrameRendering -= RenderPipeline_beginFrameRendering;
-        }
-#endif
+//#if UNITY_2018_3_OR_NEWER
+//        if (LWRP_Fix)
+//        {
+//            RenderPipeline.beginFrameRendering -= RenderPipeline_beginFrameRendering;
+//        }
+//#endif
 
         if (!MultiCameraCulling)
         {
@@ -436,12 +437,12 @@ public class SECTR_CullingCamera : MonoBehaviour
     void OnDestroy()
     {
 
-#if UNITY_2018_3_OR_NEWER
-        if (LWRP_Fix)
-        {
-            RenderPipeline.beginFrameRendering -= RenderPipeline_beginFrameRendering;
-        }
-#endif
+//#if UNITY_2018_3_OR_NEWER
+//        if (LWRP_Fix)
+//        {
+//            RenderPipeline.beginFrameRendering -= RenderPipeline_beginFrameRendering;
+//        }
+//#endif
 #if UNITY_EDITOR
         // Cleanup for the in-editor culling debug-vis stuff.
         Camera sceneCamera = SceneView.lastActiveSceneView ? SceneView.lastActiveSceneView.camera : null;

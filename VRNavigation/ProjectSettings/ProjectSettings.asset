@@ -672,7 +672,8 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    7: SECTR_AUDIO_PRESENT;SECTR_CORE_PRESENT;SECTR_STREAM_PRESENT
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
