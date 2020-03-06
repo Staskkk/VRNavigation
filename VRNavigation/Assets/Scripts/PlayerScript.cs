@@ -9,12 +9,15 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_EDITOR
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
+#endif
     }
 
     void Update()
     {
+#if UNITY_EDITOR
         float translationZ = Input.GetAxis("Vertical");
         float translationX = Input.GetAxis("Horizontal");
         var direction = transform.TransformDirection(new Vector3(translationX, 0, translationZ));
@@ -32,6 +35,7 @@ public class PlayerScript : MonoBehaviour
         {
             Cursor.visible = true;
         }
+#endif
     }
 
 
