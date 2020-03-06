@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public Transform playerTransform;
+
     public float speed;
     public float mouseSensitivity;
 
@@ -22,7 +24,7 @@ public class PlayerScript : MonoBehaviour
         float translationX = Input.GetAxis("Horizontal");
         var direction = transform.TransformDirection(new Vector3(translationX, 0, translationZ));
         direction = new Vector3(direction.x, 0, direction.z).normalized * speed * Time.deltaTime;
-        transform.position += direction;
+        playerTransform.position += direction;
 
         if (!Input.GetKey(KeyCode.LeftControl))
         {
@@ -37,6 +39,4 @@ public class PlayerScript : MonoBehaviour
         }
 #endif
     }
-
-
 }
