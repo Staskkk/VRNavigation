@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - maze
   - border
+  - maze
+  - startLocation
   layers:
   - Default
   - TransparentFX

@@ -24,7 +24,6 @@ using System.Collections.Generic;
 using System.Threading;
 #if UNITY_2018_3_OR_NEWER
 using UnityEngine.Experimental.Rendering;
-using UnityEngine.Rendering;
 #endif
 
 /// \ingroup Vis

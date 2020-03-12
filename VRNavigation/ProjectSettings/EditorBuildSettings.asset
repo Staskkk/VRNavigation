@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Oculus/VR/Scenes/Cubes.unity
-    guid: d920b3d2525670f4abad3d20eda3b349
-  m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 06aa3324bbc190e438e93ee2b6b3243a,
-      type: 2}
-    Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: f90b8ed0461d3214cb13b34fb06612a3,
-      type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d0c8aa146f22e3e4894a985a0b477933,
-      type: 2}
+    path: Assets/Scenes/Main.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  m_configObjects: {}

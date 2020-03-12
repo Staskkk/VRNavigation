@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MazeCollideScript : MonoBehaviour
 {
-    public GameObject worldObjects;
-    public MeshRenderer mazeRenderer;
     public GameObject mazeLeaveWarning;
 
     private bool isInsideWall;
@@ -44,8 +42,6 @@ public class MazeCollideScript : MonoBehaviour
     private void SetWarning()
     {
         bool isEnabled = !isInsideBorder || isInsideWall;
-        mazeRenderer.enabled = !isEnabled;
-        worldObjects.SetActive(!isEnabled);
         mazeLeaveWarning.SetActive(isEnabled);
     }
 }
