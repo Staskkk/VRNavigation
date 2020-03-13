@@ -2,9 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StudyManagerScript : MonoBehaviour
+public class StudyScript : MonoBehaviour
 {
+    public static StudyScript instance;
+
     public GameObject player;
+
+    public GameObject[] mazes;
+    public GameObject[] conditions;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
