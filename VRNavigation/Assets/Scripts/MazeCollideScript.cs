@@ -11,6 +11,11 @@ public class MazeCollideScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!StudyScript.instance.isTrialRunning)
+        {
+            return;
+        }
+
         if (other.CompareTag("border"))
         {
             isInsideBorder = true;
@@ -26,6 +31,11 @@ public class MazeCollideScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!StudyScript.instance.isTrialRunning)
+        {
+            return;
+        }
+
         if (other.CompareTag("border"))
         {
             isInsideBorder = false;

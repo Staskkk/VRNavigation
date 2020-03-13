@@ -8,8 +8,16 @@ public class StudyScript : MonoBehaviour
 
     public GameObject player;
 
-    public GameObject[] mazes;
-    public GameObject[] conditions;
+    public MazeScript[] mazes;
+
+    public GameObject readyWindow;
+
+    public int mazeId;
+
+    public int condId;
+
+    public bool isTrialRunning;
+
 
     private void Awake()
     {
@@ -21,17 +29,36 @@ public class StudyScript : MonoBehaviour
         
     }
 
-    void Update()
+    public void ShowStartPoint(int mazeId, int condId)
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        this.mazeId = mazeId;
+        this.condId = condId;
+
+        foreach (var maze in mazes)
         {
-            StartTrial();
+            maze.gameObject.SetActive(false);
         }
+
+        mazes[mazeId].gameObject.SetActive(true);
+        mazes[mazeId].SetCondition(condId);
+        mazes[mazeId].StartMaze();
+    }
+
+    public void StartPointReached(bool isReached)
+    {
+        readyWindow.SetActive(isReached);
+    }
+
+    public void ReadyButtonOnClick()
+    {
+        StartTrial();
     }
 
     public void StartTrial()
     {
-        var startPoint = GameObject.FindGameObjectWithTag("startLocation");
-        startPoint.GetComponent<Renderer>().enabled = true;
+        mazes[mazeId].startPoint.SetActive(false);
+        mazes[mazeId].textures.SetActive(true);
+        readyWindow.SetActive(false);
+        isTrialRunning = true;
     }
 }

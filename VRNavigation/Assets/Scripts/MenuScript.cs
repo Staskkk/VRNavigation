@@ -13,28 +13,38 @@ public class MenuScript : MonoBehaviour
 
     public bool debugMode;
 
+    public int mazeId;
+
+    public int condId;
+
     public void ToggleValueChanged(Toggle changedToggle)
     {
         if (changedToggle.isOn)
         {
             runAutoToggle = true;
-            var toggles = changedToggle.CompareTag("mazeToggle") ? mazeToggles : conditionToggles;
-            foreach (var toggle in toggles)
+            bool isMaze = changedToggle.CompareTag("mazeToggle");
+            var toggles = isMaze ? mazeToggles : conditionToggles;
+            for (int i = 0; i < toggles.Length; ++i)
             {
-                if (toggle != changedToggle)
+                if (toggles[i] != changedToggle)
                 {
-                    toggle.isOn = false;
+                    toggles[i].isOn = false;
+                }
+                else if (isMaze)
+                {
+                    mazeId = i;
+                }
+                else
+                {
+                    condId = i;
                 }
             }
 
             runAutoToggle = false;
         }
-        else
+        else if (!runAutoToggle)
         {
-            if (!runAutoToggle)
-            {
-                changedToggle.isOn = true;
-            }
+            changedToggle.isOn = true;
         }
     }
 
@@ -46,5 +56,6 @@ public class MenuScript : MonoBehaviour
     public void StartButtonClick()
     {
         gameObject.SetActive(false);
+        StudyScript.instance.ShowStartPoint(mazeId, condId);
     }
 }
