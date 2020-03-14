@@ -53,6 +53,14 @@ public class MenuScript : MonoBehaviour
         debugMode = debugToggle.isOn;
     }
 
+    private void Update()
+    {
+        if (gameObject.activeSelf && OVRInput.GetDown(OVRInput.Button.One))
+        {
+            StartButtonClick();
+        }
+    }
+
     public void StartButtonClick()
     {
         gameObject.SetActive(false);

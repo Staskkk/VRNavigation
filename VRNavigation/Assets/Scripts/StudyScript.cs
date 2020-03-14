@@ -54,6 +54,14 @@ public class StudyScript : MonoBehaviour
         StartTrial();
     }
 
+    private void Update()
+    {
+        if (readyWindow.activeSelf && OVRInput.GetDown(OVRInput.Button.One))
+        {
+            ReadyButtonOnClick();
+        }
+    }
+
     public void StartTrial()
     {
         mazes[mazeId].startPoint.SetActive(false);
