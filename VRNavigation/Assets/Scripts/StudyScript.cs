@@ -12,11 +12,15 @@ public class StudyScript : MonoBehaviour
 
     public GameObject readyWindow;
 
+    public GameObject debugWindow;
+
     public int mazeId;
 
     public int condId;
 
     public bool isTrialRunning;
+
+    public bool isDebugMode;
 
 
     private void Awake()
@@ -29,8 +33,14 @@ public class StudyScript : MonoBehaviour
         
     }
 
-    public void ShowStartPoint(int mazeId, int condId)
+    public void StartScene(int mazeId, int condId, bool isDebugMode)
     {
+        this.isDebugMode = isDebugMode;
+        if (isDebugMode)
+        {
+            debugWindow.SetActive(true);
+        }
+
         this.mazeId = mazeId;
         this.condId = condId;
 

@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +13,7 @@ public class MenuScript : MonoBehaviour
 
     private bool runAutoToggle = false;
 
-    public bool debugMode;
+    public bool isDebugMode;
 
     public int mazeId;
 
@@ -50,7 +52,7 @@ public class MenuScript : MonoBehaviour
 
     public void ToggleDebugChanged(Toggle debugToggle)
     {
-        debugMode = debugToggle.isOn;
+        isDebugMode = debugToggle.isOn;
     }
 
     private void Update()
@@ -64,6 +66,18 @@ public class MenuScript : MonoBehaviour
     public void StartButtonClick()
     {
         gameObject.SetActive(false);
-        StudyScript.instance.ShowStartPoint(mazeId, condId);
+        StudyScript.instance.StartScene(mazeId, condId, isDebugMode);
+    }
+
+    public void ButtonIncrement(TMP_InputField input)
+    {
+        int newVal = Convert.ToInt32(input.text.Substring(1)) + 1;
+        input.text = input.text[0].ToString() + newVal;
+    }
+
+    public void ButtonDecrement(TMP_InputField input)
+    {
+        int newVal = Convert.ToInt32(input.text.Substring(1)) - 1;
+        input.text = input.text[0].ToString() + newVal;
     }
 }

@@ -6,16 +6,29 @@ public class MazeCollideScript : MonoBehaviour
 {
     public GameObject mazeLeaveWarning;
 
+    public bool isDebugVersion;
+
     private bool isInsideWall;
     private bool isInsideBorder;
 
+    private void Awake()
+    {
+        if (isDebugVersion)
+        {
+#if !UNITY_EDITOR
+            Component.Destroy(this);
+#endif
+        }
+        else
+        {
+#if UNITY_EDITOR
+            Component.Destroy(this);
+#endif
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (!StudyScript.instance.isTrialRunning)
-        {
-            return;
-        }
-
         if (other.CompareTag("border"))
         {
             isInsideBorder = true;
@@ -26,16 +39,16 @@ public class MazeCollideScript : MonoBehaviour
             isInsideWall = true;
         }
 
-        SetWarning();
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
         if (!StudyScript.instance.isTrialRunning)
         {
             return;
         }
 
+        SetWarning();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
         if (other.CompareTag("border"))
         {
             isInsideBorder = false;
@@ -44,6 +57,11 @@ public class MazeCollideScript : MonoBehaviour
         if (other.CompareTag("maze"))
         {
             isInsideWall = false;
+        }
+
+        if (!StudyScript.instance.isTrialRunning)
+        {
+            return;
         }
 
         SetWarning();
