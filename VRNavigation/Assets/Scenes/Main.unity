@@ -6355,11 +6355,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  conditionToggles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  condToggles: []
+  debugToggle: {fileID: 0}
+  inputs: []
   isDebugMode: 0
   mazeId: 0
   condId: 0
@@ -7343,11 +7341,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  conditionToggles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  condToggles: []
+  debugToggle: {fileID: 0}
+  inputs: []
   isDebugMode: 0
   mazeId: 0
   condId: 0
@@ -10163,11 +10159,17 @@ MonoBehaviour:
   - {fileID: 146372179}
   - {fileID: 743528344}
   - {fileID: 1227841825}
-  conditionToggles:
+  condToggles:
   - {fileID: 1573612328}
   - {fileID: 372236579}
   - {fileID: 995303404}
   - {fileID: 1524770084}
+  debugToggle: {fileID: 2053121469}
+  inputs:
+  - {fileID: 495354022}
+  - {fileID: 102295337}
+  - {fileID: 1578724345}
+  - {fileID: 329133712}
   isDebugMode: 0
   mazeId: 0
   condId: 0
