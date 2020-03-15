@@ -6,26 +6,12 @@ public class MazeCollideScript : MonoBehaviour
 {
     public GameObject mazeLeaveWarning;
 
-    public bool isDebugVersion;
+    public LayerMask everythingMask;
+
+    public LayerMask uiMask;
 
     private bool isInsideWall;
     private bool isInsideBorder;
-
-    private void Awake()
-    {
-        if (isDebugVersion)
-        {
-#if !UNITY_EDITOR
-            Component.Destroy(this);
-#endif
-        }
-        else
-        {
-#if UNITY_EDITOR
-            Component.Destroy(this);
-#endif
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,7 +30,7 @@ public class MazeCollideScript : MonoBehaviour
             return;
         }
 
-        SetWarning();
+        SetCollision();
     }
 
     private void OnTriggerExit(Collider other)
@@ -64,12 +50,24 @@ public class MazeCollideScript : MonoBehaviour
             return;
         }
 
-        SetWarning();
+        SetCollision();
     }
 
-    private void SetWarning()
+    private void SetCollision()
     {
         bool isEnabled = !isInsideBorder || isInsideWall;
+        foreach (var camera in Camera.allCameras)
+        {
+            if (!camera.orthographic)
+            {
+                camera.cullingMask = isEnabled ? uiMask : everythingMask;
+            }
+        }
+
         mazeLeaveWarning.SetActive(isEnabled);
+        if (isEnabled)
+        {
+            StudyScript.instance.collisionCount++;
+        }
     }
 }

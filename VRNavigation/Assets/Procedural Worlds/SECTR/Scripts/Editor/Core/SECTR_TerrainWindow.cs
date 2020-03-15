@@ -1,4 +1,4 @@
-// Copyright © Procedural Worlds Pty Limited.  All Rights Reserved. 
+// Copyright ï¿½ Procedural Worlds Pty Limited.  All Rights Reserved. 
 // Copyright (C) Procedural Worlds Pty Limited.  All Rights Reserved. 
 
 using UnityEngine;
@@ -142,8 +142,8 @@ public class SECTR_TerrainWindow : SECTR_Window
 		float sectorHeight = terrainSize.y / sectorsHeight;
 		float sectorLength = terrainSize.z / sectorsLength;
 
-		int heightmapWidth = (terrain.terrainData.heightmapWidth / sectorsWidth);
-		int heightmapLength = (terrain.terrainData.heightmapHeight / sectorsLength);
+		int heightmapWidth = (terrain.terrainData.heightmapResolution / sectorsWidth);
+		int heightmapLength = (terrain.terrainData.heightmapResolution / sectorsLength);
 		int alphaWidth = terrain.terrainData.alphamapWidth / sectorsWidth;
 		int alphaLength = terrain.terrainData.alphamapHeight / sectorsLength;
 		int detailWidth = terrain.terrainData.detailWidth / sectorsWidth;

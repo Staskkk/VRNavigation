@@ -6,6 +6,8 @@ public class MazeScript : MonoBehaviour
 {
     public int condId;
 
+    public float optimalDistance;
+
     public GameObject[] conds;
 
     public GameObject startPoint;

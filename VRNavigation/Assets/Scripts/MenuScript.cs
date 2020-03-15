@@ -80,18 +80,19 @@ public class MenuScript : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    private void Update()
-    {
-        if (gameObject.activeSelf && OVRInput.GetDown(OVRInput.Button.One))
-        {
-            StartButtonClick();
-        }
-    }
+    ////private void Update()
+    ////{
+    ////    if (gameObject.activeSelf && OVRInput.GetDown(OVRInput.Button.One))
+    ////    {
+    ////        StartButtonClick();
+    ////    }
+    ////}
 
     public void StartButtonClick()
     {
         gameObject.SetActive(false);
-        StudyScript.instance.StartScene(mazeId, condId, isDebugMode);
+        StudyScript.instance.StartScene(inputs[0].text, inputs[1].text, inputs[2].text, inputs[3].text,
+            mazeId, condId, isDebugMode);
     }
 
     public void ButtonIncrement(TMP_InputField input)
