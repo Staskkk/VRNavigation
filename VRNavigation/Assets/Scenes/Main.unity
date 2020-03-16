@@ -3333,7 +3333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condId: 0
-  optimalDistance: 18
+  optimalDistance: 13
   conds:
   - {fileID: 292478758}
   - {fileID: 1406745949}
@@ -6442,7 +6442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condId: 0
-  optimalDistance: 18
+  optimalDistance: 13
   conds:
   - {fileID: 1526802965}
   - {fileID: 642068594}
@@ -7620,7 +7620,7 @@ MonoBehaviour:
   distanceTraveled: 0
   distanceRate: 0
   accumulateRotation: 0
-  trialTime: 0
+  taskTime: 0
 --- !u!1 &936784533
 GameObject:
   m_ObjectHideFlags: 0
@@ -7667,7 +7667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condId: 0
-  optimalDistance: 18
+  optimalDistance: 13
   conds:
   - {fileID: 1456646849}
   - {fileID: 1251658625}
@@ -8988,7 +8988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   condId: 0
-  optimalDistance: 18
+  optimalDistance: 13
   conds:
   - {fileID: 310536394}
   - {fileID: 185214467}

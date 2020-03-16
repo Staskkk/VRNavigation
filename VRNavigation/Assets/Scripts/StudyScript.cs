@@ -43,9 +43,9 @@ public class StudyScript : MonoBehaviour
     public float distanceTraveled;
     public float distanceRate;
     public float accumulateRotation;
-    public float trialTime;
+    public float taskTime;
 
-    private float trialStartTime;
+    private float taskStartTime;
 
     private Coroutine trackerLogCoroutine;
 
@@ -59,15 +59,10 @@ public class StudyScript : MonoBehaviour
     public void StartScene(string participantId, string blockId, string groupId, string trialId,
         int mazeId, int condId, bool isDebugMode)
     {
-        this.distanceTraveled = 0;
-        this.accumulateRotation = 0;
-        this.collisionCount = 0;
-        this.trialTime = 0;
         this.participantId = participantId;
         this.blockId = blockId;
         this.groupId = groupId;
         this.trialId = trialId;
-        this.trialStartTime = Time.unscaledTime;
         this.maze = "Maze" + mazeId;
         switch (this.condId)
         {
@@ -128,7 +123,7 @@ public class StudyScript : MonoBehaviour
             distanceTraveled += Vector3.Distance(playerPosition, player.transform.position);
             accumulateRotation += Mathf.Abs(Mathf.DeltaAngle(playerRotation.y, player.transform.rotation.eulerAngles.y));
             distanceRate = mazes[mazeId].optimalDistance / distanceTraveled;
-            trialTime = Time.unscaledTime - trialStartTime;
+            taskTime = Time.unscaledTime - taskStartTime;
         }
         
         playerPosition = player.transform.position;
@@ -144,6 +139,7 @@ public class StudyScript : MonoBehaviour
         mazes[mazeId].startPoint.SetActive(false);
         mazes[mazeId].textures.SetActive(true);
         readyWindow.SetActive(false);
+        ClearValues();
         isTrialRunning = true;
         StartLogging();
     }
@@ -151,11 +147,21 @@ public class StudyScript : MonoBehaviour
     public void SetTask(string task)
     {
         SaveTaskLogs();
+        ClearValues();
         this.task = task;
         if (task == "Finish")
         {
             EndTrial();
         }
+    }
+
+    private void ClearValues()
+    {
+        this.distanceTraveled = 0;
+        this.accumulateRotation = 0;
+        this.collisionCount = 0;
+        this.taskTime = 0;
+        this.taskStartTime = Time.unscaledTime;
     }
 
     private void EndTrial()
@@ -179,15 +185,16 @@ public class StudyScript : MonoBehaviour
         }
 
         string logFile = Application.persistentDataPath + "/experiment_logs/"
-            + participantId + "_" + blockId + "_" + groupId + "_" + maze + "_" + condition + "_" + trialId + ".csv";
+            + participantId + "_" + blockId + "_" + groupId + "_" + maze + "_" + condition + "_" + trialId + "_" + task + ".csv";
+        var sb = new StringBuilder();
         if (!File.Exists(logFile))
         {
-            var sb = new StringBuilder();
             sb.AppendLine("Participant,Block,Group,Trial,Maze,Condition,Task,Session time,"
-                + "Timestamp,Collision count,Dist traveled:,Accum rotation,Distance rate,Trial time");
-            sb.AppendLine(GetLogCSV());
-            File.AppendAllText(logFile, sb.ToString());
+                + "Timestamp,Collision count,Dist traveled:,Accum rotation,Distance rate,Task time");
         }
+
+        sb.AppendLine(GetLogCSV());
+        File.AppendAllText(logFile, sb.ToString());
     }
 
     private void StartLogging()
@@ -210,7 +217,7 @@ public class StudyScript : MonoBehaviour
             {
 
                 string csvHeaders = "Participant,Block,Group,Trial,Maze,Condition,Task,Session time,"
-                    + "Pos(x),Pos(y),Pos(z),Rot(x),Rot(y),Rot(z),Timestamp,Collision count,Dist traveled:,Accum rotation,Distance rate,Trial time\r\n";
+                    + "Pos(x),Pos(y),Pos(z),Rot(x),Rot(y),Rot(z),Timestamp,Collision count,Dist traveled:,Accum rotation,Distance rate,Task time\r\n";
                 File.AppendAllText(trackerLogFile, csvHeaders);
             }
 
@@ -244,7 +251,7 @@ public class StudyScript : MonoBehaviour
             res += "Dist traveled:\t" + distanceTraveled.ToString("F3") + "\n";
             res += "Accum rotation:\t" + accumulateRotation.ToString("F1") + "\n";
             res += "Distance rate:\t" + distanceRate.ToString("F3") + "\n";
-            res += "Trial time:\t\t" + trialTime.ToString("F3") + "\n";
+            res += "Task time:\t\t" + taskTime.ToString("F3") + "\n";
         }
 
         return res;
@@ -258,7 +265,7 @@ public class StudyScript : MonoBehaviour
             playerPosition.x.ToString("F3"), playerPosition.y.ToString("F3"), playerPosition.z.ToString("F3"),
             playerRotation.x.ToString("F1"), playerRotation.y.ToString("F1"), playerRotation.z.ToString("F1"),
             timestamp.ToString("MM/dd/yyyy HH:mm:ss"), collisionCount.ToString(), distanceTraveled.ToString("F3"),
-            accumulateRotation.ToString("F1"), distanceRate.ToString("F3"), trialTime.ToString("F3"));
+            accumulateRotation.ToString("F1"), distanceRate.ToString("F3"), taskTime.ToString("F3"));
         return sb.ToString();
     }
 
@@ -268,7 +275,7 @@ public class StudyScript : MonoBehaviour
         sb.AppendFormat("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}",
             participantId, blockId, groupId, trialId, maze, condition, task, sessionTime.ToString("F3"),
             timestamp.ToString("MM/dd/yyyy HH:mm:ss"), collisionCount.ToString(), distanceTraveled.ToString("F3"),
-            accumulateRotation.ToString("F1"), distanceRate.ToString("F3"), trialTime.ToString("F3"));
+            accumulateRotation.ToString("F1"), distanceRate.ToString("F3"), taskTime.ToString("F3"));
         return sb.ToString();
     }
 }
