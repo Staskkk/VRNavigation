@@ -27,6 +27,7 @@ public class MazeScript : MonoBehaviour
 
     public void StartMaze()
     {
+        textures.SetActive(false);
         startPoint.SetActive(true);
     }
 }
