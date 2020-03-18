@@ -60,7 +60,7 @@ public class MenuScript : MonoBehaviour
                 else
                 {
                     condId = i;
-                    PlayerPrefs.SetInt("mazeToggle", condId);
+                    PlayerPrefs.SetInt("condToggle", condId);
                 }
             }
 

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 445682270720615574}
   - component: {fileID: 902777197459643623}
   - component: {fileID: 992005830248941539}
+  - component: {fileID: 1112070392}
+  - component: {fileID: 1112070393}
   m_Layer: 0
   m_Name: MazeObj
   m_TagString: Untagged
@@ -123,4 +125,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTaskName: FindObj1
   nextTaskName: GetToStart
+  audioSource: {fileID: 1112070392}
   foundMaterial: {fileID: 2100000, guid: 3dc9b8f364c91ea4c9c8676019b76e9e, type: 2}
+--- !u!114 &1112070392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183774768807061731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da380ca0cbd5fa042b0552e74282435c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 1
+  pitch: 1
+  Cue: {fileID: 11400000, guid: 7b6fbb03d37a0274c9160e9eca04b82c, type: 2}
+  Loop: 1
+  PlayOnStart: 0
+  InterpDistance: 8
+--- !u!114 &1112070393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183774768807061731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1612e005b9d8644ca3229b27e6dfbdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreTransforms: []
+  children: []
+  renderers: []
+  lights: []
+  terrains: []
+  shadowLights: []
+  shadowCasters: []
+  totalBounds:
+    m_Center: {x: -2.4110003, y: -0.58000004, z: -0.35600007}
+    m_Extent: {x: 0.25, y: 0.525, z: 0.315}
+  renderBounds:
+    m_Center: {x: -2.4110003, y: -0.58000004, z: -0.35600007}
+    m_Extent: {x: 0.245, y: 0.52, z: 0.31}
+  lightBounds:
+    m_Center: {x: -2.4110003, y: -0.58000004, z: -0.35600007}
+    m_Extent: {x: 0, y: 0, z: 0}
+  hasRenderBounds: 1
+  hasLightBounds: 0
+  shadowCaster: 1
+  shadowLight: 0
+  frozen: 0
+  neverJoin: 0
+  bakedOnlyLights: []
+  PortalDetermined: 0
+  ForceStartSector: {fileID: 0}
+  BoundsUpdateMode: 2
+  ExtraBounds: 0.01
+  OverrideBounds: 0
+  BoundsOverride:
+    m_Center: {x: -2.4110003, y: -0.58000004, z: -0.35600007}
+    m_Extent: {x: 0.25, y: 0.525, z: 0.315}
+  DirShadowCaster: {fileID: 0}
+  DirShadowDistance: 100
+  ChildCulling: 0
+  FloatingPointFix: 0

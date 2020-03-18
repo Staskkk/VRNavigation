@@ -8,6 +8,8 @@ public class TaskScript : MonoBehaviour
 
     public string nextTaskName;
 
+    public SECTR_PropagationSource audioSource;
+
     public Material foundMaterial;
 
     private Material defMaterial;
@@ -23,6 +25,10 @@ public class TaskScript : MonoBehaviour
     private void OnEnable()
     {
         currRenderer.material = defMaterial;
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
