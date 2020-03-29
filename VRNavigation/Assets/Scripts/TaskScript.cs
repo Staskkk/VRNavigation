@@ -12,19 +12,17 @@ public class TaskScript : MonoBehaviour
 
     public Material foundMaterial;
 
-    private Material defMaterial;
+    public Material defMaterial;
 
-    private MeshRenderer currRenderer;
-
-    private void Awake()
-    {
-        currRenderer = GetComponent<MeshRenderer>();
-        defMaterial = currRenderer.material;
-    }
+    public MeshRenderer objectrRenderer;
 
     private void OnEnable()
     {
-        currRenderer.material = defMaterial;
+        if (objectrRenderer != null)
+        {
+            objectrRenderer.material = defMaterial;
+        }
+
         if (audioSource != null)
         {
             audioSource.Play();
@@ -36,9 +34,9 @@ public class TaskScript : MonoBehaviour
         if (other.CompareTag("Player") && StudyScript.instance.task == currentTaskName)
         {
             StudyScript.instance.SetTask(nextTaskName);
-            if (currRenderer != null)
+            if (objectrRenderer != null)
             {
-                currRenderer.material = foundMaterial;
+                objectrRenderer.material = foundMaterial;
             }
         }    
     }
